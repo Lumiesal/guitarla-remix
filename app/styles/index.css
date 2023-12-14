@@ -36,7 +36,8 @@
         text-align: center;
         font-weight: 900;
         color: var(--primary);
-        margin: 5rem 0;
+        padding:5rem 0;
+        margin:0;
     }
 
 
@@ -102,6 +103,41 @@
         font-size:1.8rem;
         font-weight:300;
         text-align:center;
+    }
+
+    /**** Error *****/
+    .content-error{
+        padding:5rem 2rem;
+    }
+    
+    .content-error .error{
+        font-size:4rem;
+        text-align:center;
+    }
+
+    .content-error .error span.status{
+        display:block;
+        color: var(--primary);
+        font-size:12rem;
+        font-weight:900;
+    }
+
+    /**** Error *****/
+    .content-error .error-btn{
+        display:block;
+        width:max-content;
+        padding:1rem 2rem;
+        margin:0 auto;
+        border-radius:.5rem;
+        color:var(--white);
+        background-color:var(--black);
+        font-size:2rem;
+        text-align:center;
+        text-decoration:none;
+        transition: background-color .5s;
+    }
+    .content-error .error-btn:hover{
+        background-color:var(--primary);
     }
 
 }

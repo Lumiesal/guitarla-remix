@@ -16,11 +16,6 @@ export function links(){
         {
             rel: 'stylesheet',
             href: styles
-        },
-        {
-            rel: 'preload',
-            href: imagen,
-            as: 'image'
         }
     ]
 }

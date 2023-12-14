@@ -7,9 +7,9 @@ const Guitarra = ({guitarra}) => {
                 <img src={imagen.data.attributes.formats.medium.url} alt={`Imagen guitarra ${titulo}`} />
             </figure>
             <div className="contenido">
-                <h3>{titulo}</h3>
+                <h3 className="titulo">{titulo}</h3>
                 <p className="descripcion">{descripcion}</p>
-                <p>{precio}</p>
+                <p className="precio">{precio}</p>
                 <Link className="enlace" to={`/guitarras/${url}`}>Ver Producto</Link>
             </div>
         </div>
