@@ -1,6 +1,5 @@
 import { getGuitarra } from '~/models/guitarras.server'
 import { useLoaderData } from "@remix-run/react";
-import styles from '~/styles/tienda.css'
 
 export function meta({data}){
   if (!data || Object.keys(data).length === 0) {
@@ -19,15 +18,6 @@ export function meta({data}){
       },
       {
         descripcion: `Guitarras, venta de guitarras, guitarra ${data.data[0].attributes.titulo}`
-      }
-  ]
-}
-
-export function links(){
-  return[
-      {
-          rel: 'stylesheet',
-          href: styles
       }
   ]
 }
@@ -51,7 +41,7 @@ const Guitarra = () => {
   const {descripcion, imagen, precio, url, titulo } = guitarra.data[0].attributes
 
   return (
-    <section className='contendor single guitarra'>
+    <section className='single guitarra'>
       <figure><img className='imagen' src={imagen.data.attributes.url} alt={`Imagen guitarra ${titulo}`}/></figure>
       <div className='contenido'>
         <h3 className="titulo">{titulo}</h3>

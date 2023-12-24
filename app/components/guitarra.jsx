@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 const Guitarra = ({guitarra}) => {
     const {descripcion, imagen, precio, url, titulo } = guitarra
+
     return (
         <div className="guitarra">
             <figure>
