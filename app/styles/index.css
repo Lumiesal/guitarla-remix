@@ -71,6 +71,7 @@
         display:flex;
         gap:2rem;
         margin-top:5rem;
+        align-items:center;
     }    
     .header .barra .navegacion a{
         padding:.5rem;
@@ -161,6 +162,7 @@
         align-items:center;
         gap:2rem;
     }
+
     .footer .contenido .navegacion a{
         color:var(--white);
         font-size:2.8rem;
@@ -168,6 +170,10 @@
         text-decoration:none;
         transition-property:background-color;
         transition-duration:.5s;
+    }
+
+    .footer .contenido .navegacion .cart{
+        display:none;
     }
 
     .footer .contenido .copyright{

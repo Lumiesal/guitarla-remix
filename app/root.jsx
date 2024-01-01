@@ -11,6 +11,7 @@ import{
 import styles from './styles/index.css';
 import Header from './components/header';
 import Footer from './components/footer';
+import { useState, useEffect } from 'react';
 
 export function meta() {
   return [
@@ -46,9 +47,58 @@ export function links(){
 }
 
 export default function app() {
+
+  const carritoLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito')) ?? [] : []
+  const [carrito, setCarrito] = useState(carritoLS)
+
+  useEffect(() =>{
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    console.log('render...')
+  }, [carrito])
+
+  const agregarCarrito = guitarra =>{
+    if (carrito.some(guitarraState => guitarraState.id === guitarra.id)) {
+      //Iterar sobre el arreglo, e identificar el elemento duplicado
+      const carritoActualizado = carrito.map( guitarraState => {
+        if (guitarraState.id === guitarra.id) {
+          //Reescribir cantidad
+          guitarraState.cantidad += guitarra.cantidad
+        }
+        return guitarraState
+      })
+      //Agg al carrito
+      setCarrito(carritoActualizado)
+    }else{
+      //regsitro nuevo, agg al carrito
+      setCarrito([...carrito, guitarra])
+    }
+  }
+
+  const actualizarCantidad = guitarra => {
+    const carritoActualizado = carrito.map( guitarraState => {
+      if (guitarraState.id === guitarra.id) {
+        //Reescribir cantidad
+        guitarraState.cantidad = guitarra.cantidad
+      }
+      return guitarraState
+    })
+    setCarrito(carritoActualizado)
+  }
+   
+  const eliminarGuitarra = id => {
+    const carritoActualizado = carrito.filter( guitarraState => guitarraState.id !== id)
+    setCarrito(carritoActualizado)
+  }
   return (
       <Document>
-          <Outlet/>
+          <Outlet
+            context={{
+              agregarCarrito,
+              carrito,
+              actualizarCantidad,
+              eliminarGuitarra
+            }}
+          />
       </Document>
   )
 }

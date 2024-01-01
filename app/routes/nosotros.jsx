@@ -24,7 +24,8 @@ export function links(){
 }
 
 function Nosotros() {
-  return (
+
+    return (
     <section className="contenedor nosotros">
         <h2 className="heading">Nosotros</h2>
         <div className="contenido">
@@ -36,7 +37,7 @@ function Nosotros() {
             </div>
         </div>
     </section>
-  )
+    )
 }
 
 export default Nosotros

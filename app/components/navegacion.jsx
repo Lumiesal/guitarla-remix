@@ -1,4 +1,5 @@
 import { Link, useLocation } from "@remix-run/react"
+import CartIcon from "./cartIcon"
 
 const Navegacion = () => {
 
@@ -22,6 +23,10 @@ const Navegacion = () => {
                 to='/posts' 
                 className={location.pathname === '/posts' ? 'active' : ''}
             >Blog</Link>
+            <Link 
+                to='/carrito' 
+                className="cart"
+            ><CartIcon width="30px" height="30px"/></Link>
         </nav>
     )
 }
