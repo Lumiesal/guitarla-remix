@@ -83,10 +83,27 @@
         text-decoration:none;
         transition-property:background-color;
         transition-duration:.5s;
+        position:relative;
     } 
     .header .barra .navegacion a.active,
     .header .barra .navegacion a:hover{
         background-color:var(--primary);        
+    } 
+
+    .header .barra .navegacion a.cart .count{
+        position:absolute;
+        width:1.8rem;
+        height:1.8rem;
+        top:-.2rem;
+        right:-.2rem;
+        font-size:1rem;
+        line-height:1rem;
+        padding:.5rem;
+        background:var(--primary);
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
     } 
 
     /**** Main *****/

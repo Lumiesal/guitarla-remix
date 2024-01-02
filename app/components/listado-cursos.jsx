@@ -22,7 +22,7 @@ const ListadoCursos = ({cursos}) => {
               className="mySwiper"
             >
             {cursos.map( curso =>(   
-              <SwiperSlide>
+              <SwiperSlide key={curso?.id}>
               <Cursos
               key={curso?.id}
               curso={curso?.attributes}

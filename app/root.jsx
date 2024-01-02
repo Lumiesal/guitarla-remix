@@ -12,6 +12,7 @@ import styles from './styles/index.css';
 import Header from './components/header';
 import Footer from './components/footer';
 import { useState, useEffect } from 'react';
+import { useLoaderData } from "@remix-run/react";
 
 export function meta() {
   return [
@@ -46,18 +47,21 @@ export function links(){
   ]
 }
 
+
 export default function app() {
 
   const carritoLS = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito')) ?? [] : []
-  const [carrito, setCarrito] = useState(carritoLS)
+  const [carrito, setCarrito] = useState(carritoLS )
 
   useEffect(() =>{
     localStorage.setItem('carrito', JSON.stringify(carrito))
-    console.log('render...')
+    /* console.log(carrito) */
   }, [carrito])
+  
 
   const agregarCarrito = guitarra =>{
-    if (carrito.some(guitarraState => guitarraState.id === guitarra.id)) {
+    console.log(carrito.some(guitarraState => guitarraState.id === guitarra.id))
+    if(carrito.some(guitarraState => guitarraState.id === guitarra.id)) {
       //Iterar sobre el arreglo, e identificar el elemento duplicado
       const carritoActualizado = carrito.map( guitarraState => {
         if (guitarraState.id === guitarra.id) {
@@ -69,6 +73,7 @@ export default function app() {
       //Agg al carrito
       setCarrito(carritoActualizado)
     }else{
+      console.log('guitarra3')
       //regsitro nuevo, agg al carrito
       setCarrito([...carrito, guitarra])
     }
@@ -105,6 +110,9 @@ export default function app() {
 
 
 function Document({children}) {
+  
+  const { carrito } = children.props.context;
+
   return (
       <html lang="es">
       <head>
@@ -117,7 +125,9 @@ function Document({children}) {
         <Links />
       </head>
       <body>
-        <Header/>
+        <Header
+          carrito= {carrito}
+        />
           <main id='main'>
             {children}
           </main>
